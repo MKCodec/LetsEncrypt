@@ -110,8 +110,8 @@ nano /etc/apache2/sites-enabled/000-default.conf
 * insira o seguinte codigo dentro das tags <VirtualHost *:443> e <VirtualHost *:445>
 ```sh
     SSLEngine on
-    SSLCertificateFile /etc/letsencrypt/live/www.redeknet.com/fullchain.pem
-    SSLCertificateKeyFile /etc/letsencrypt/live/www.redeknet.com/privkey.pem
+    SSLCertificateFile /etc/letsencrypt/live/meudominio.com/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/meudominio.com/privkey.pem
     Include /etc/letsencrypt/options-ssl-apache.conf
 ```
 
