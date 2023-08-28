@@ -34,7 +34,7 @@ apt install git
 4 - Instale o repositorio no seu sistema MkAuth
 ```sh
 cd /opt
-git clone https://github.com/MKCodec/Let-s-Encrypt-MkAuth-RouterOS-7
+git clone https://github.com/MKCodec/LetsEncrypt.git
 ```
 5 - Edite o arquivo de Configuração 
 
