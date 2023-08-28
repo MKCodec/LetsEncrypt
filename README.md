@@ -85,7 +85,7 @@ apt install certbot -y
 
 11 - Gere um Certificado SSL com o certbot
 
-* O certificado gerado é automaticamente ibstalado para o mikrotik
+* O certificado gerado é automaticamente instalado para o mikrotik
 * no codigo abaixo será gerado um certificado coringa para o dominio especificado no passo 5
 ```sh
 source /opt/LetsEncrypt/LetsEncrypt.settings
