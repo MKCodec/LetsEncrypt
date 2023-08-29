@@ -48,8 +48,10 @@ nano /opt/LetsEncrypt/LetsEncrypt.settings
 | DOMAIN | meudominio.com | Dominio que será Certificado |
 | HOTSPOT_PROFILLE | default | Hotspot que receberá o Certificado |
 | HOTSPOT_AUTH | mac,http-chap,http-pap,trial | Tipos de autenticação do Hotspot |
+| HOTSPOT_MODE | true ou false | Habilita SSL no Hotspot |
 
-* utilize o HOTSPOT_AUTH para definir o modo de autenticação alem do https que é nativo do script 
+* utilize o HOTSPOT_AUTH para definir o modo de autenticação alem do https que é nativo do script
+* os Atributos HOTSPOT_PROFILLE e HOTSPOT_AUTH só funcionarão com o HOTSPOT_MODE definido como true
 
 
 6 - Edite as Permissões do Arquivo:
