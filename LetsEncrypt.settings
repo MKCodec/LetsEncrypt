@@ -3,5 +3,5 @@ ROUTEROS_HOST=192.168.3.1
 ROUTEROS_SSH_PORT=22
 ROUTEROS_PRIVATE_KEY=/opt/LetsEncrypt/LetsEncrypt
 DOMAIN=redeknet.com
-HOTSPORT_PROFILLE=default
-HOTSPORT_AUTH=mac,http-chap,http-pap,trial
+HOTSPOT_PROFILLE=default
+HOTSPOT_AUTH=mac,http-chap,http-pap,trial
