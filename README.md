@@ -49,6 +49,8 @@ nano /opt/LetsEncrypt/LetsEncrypt.settings
 | HOTSPOT_PROFILLE | default | Hotspot que receberá o Certificado |
 | HOTSPOT_AUTH | mac,http-chap,http-pap,trial | Tipos de autenticação do Hotspot |
 
+* utilize o HOTSPOT_AUTH para definir o modo de autenticação alem do https que é nativo do script 
+
 
 6 - Edite as Permissões do Arquivo:
 ```sh
