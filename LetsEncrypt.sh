@@ -1,8 +1,8 @@
 #!/bin/bash
 CONFIG_FILE=/opt/LetsEncrypt/LetsEncrypt.settings
 
-if [[ -z $1 ]] || [[ -z $2 ]] || [[ -z $3 ]] || [[ -z $4 ]] || [[ -z $5 ]] || [[ -z $6 ]] || [[ -z $7 ]]; then
-        echo -e "Usage: $0 or $0 [RouterOS User] [RouterOS Host] [SSH Port] [SSH Private Key] [Domain] [Hotspot Profille] [Hotspot Auth]\n"
+if [[ -z $1 ]] || [[ -z $2 ]] || [[ -z $3 ]] || [[ -z $4 ]] || [[ -z $5 ]] || [[ -z $6 ]] || [[ -z $7 ]] || [[ -z $8 ]]; then
+        echo -e "Usage: $0 or $0 [RouterOS User] [RouterOS Host] [SSH Port] [SSH Private Key] [Domain] [Hotspot Profille] [Hotspot Auth] [Hotspot Mode]\n"
         source $CONFIG_FILE
 else
         ROUTEROS_USER=$1
@@ -12,11 +12,12 @@ else
         DOMAIN=$5
         HOTSPOT_PROFILLE=$6
         HOTSPOT_AUTH=$7
+        HOTSPOT_MODE=$8
 
 fi
 
-if [[ -z $ROUTEROS_USER ]] || [[ -z $ROUTEROS_HOST ]] || [[ -z $ROUTEROS_SSH_PORT ]] || [[ -z $ROUTEROS_PRIVATE_KEY ]] || [[ -z $DOMAIN ]] || [[ -z $HOTSPOT_PROFILLE ]] || [[ -z $HOTSPOT_AUTH ]]; then
-        echo "Check the config file $CONFIG_FILE or start with params: $0 [RouterOS User] [RouterOS Host] [SSH Port] [SSH Private Key] [Domain] [Hotspot Profille] [Hotspot Auth]"
+if [[ -z $ROUTEROS_USER ]] || [[ -z $ROUTEROS_HOST ]] || [[ -z $ROUTEROS_SSH_PORT ]] || [[ -z $ROUTEROS_PRIVATE_KEY ]] || [[ -z $DOMAIN ]] || [[ -z $HOTSPOT_PROFILLE ]] || [[ -z $HOTSPOT_AUTH ]] || [[ -z $HOTSPOT_MODE ]]; then
+        echo "Check the config file $CONFIG_FILE or start with params: $0 [RouterOS User] [RouterOS Host] [SSH Port] [SSH Private Key] [Domain] [Hotspot Profille] [Hotspot Auth] [Hotspot Mode]"
         echo "Please avoid spaces"
         exit 1
 fi
@@ -81,5 +82,10 @@ $routeros /interface sstp-server server set certificate=$DOMAIN.pem_0
 
 $routeros /ip service set www-ssl certificate=$DOMAIN.pem_0
 $routeros /ip service set api-ssl certificate=$DOMAIN.pem_0
+
+if [ $HOTSPOT_MODE = 'true' ]; then
 $routeros /ip hotspot profile set $HOTSPOT_PROFILLE login-by=$HOTSPOT_AUTH,https ssl-certificate=$DOMAIN.pem_0
+fi
+
 exit 0
+
