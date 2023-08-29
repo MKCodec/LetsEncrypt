@@ -1,6 +1,7 @@
 ROUTEROS_USER=LetsEncrypt
-ROUTEROS_HOST=192.168.88.1
+ROUTEROS_HOST=192.168.3.1
 ROUTEROS_SSH_PORT=22
 ROUTEROS_PRIVATE_KEY=/opt/LetsEncrypt/LetsEncrypt
-DOMAIN=meudominio.com
+DOMAIN=redeknet.com
 HOTSPORT_PROFILLE=default
+HOTSPORT_AUTH=mac,http-chap,http-pap,trial
