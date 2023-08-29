@@ -1,8 +1,8 @@
 #!/bin/bash
 CONFIG_FILE=/opt/LetsEncrypt/LetsEncrypt.settings
 
-if [[ -z $1 ]] || [[ -z $2 ]] || [[ -z $3 ]] || [[ -z $4 ]] || [[ -z $5 ]] || [[ -z $6 ]]; then
-        echo -e "Usage: $0 or $0 [RouterOS User] [RouterOS Host] [SSH Port] [SSH Private Key] [Domain] [Hotspot Profille]\n"
+if [[ -z $1 ]] || [[ -z $2 ]] || [[ -z $3 ]] || [[ -z $4 ]] || [[ -z $5 ]] || [[ -z $6 ]] || [[ -z $7 ]]; then
+        echo -e "Usage: $0 or $0 [RouterOS User] [RouterOS Host] [SSH Port] [SSH Private Key] [Domain] [Hotspot Profille] [Hotspot Auth]\n"
         source $CONFIG_FILE
 else
         ROUTEROS_USER=$1
@@ -11,10 +11,12 @@ else
         ROUTEROS_PRIVATE_KEY=$4
         DOMAIN=$5
         HOTSPORT_PROFILLE=$6
+        HOTSPORT_AUTH=$7
+
 fi
 
-if [[ -z $ROUTEROS_USER ]] || [[ -z $ROUTEROS_HOST ]] || [[ -z $ROUTEROS_SSH_PORT ]] || [[ -z $ROUTEROS_PRIVATE_KEY ]] || [[ -z $DOMAIN ]] || [[ -z $HOTSPORT_PROFILLE ]]; then
-        echo "Check the config file $CONFIG_FILE or start with params: $0 [RouterOS User] [RouterOS Host] [SSH Port] [SSH Private Key] [Domain] [Hotspot Profille]"
+if [[ -z $ROUTEROS_USER ]] || [[ -z $ROUTEROS_HOST ]] || [[ -z $ROUTEROS_SSH_PORT ]] || [[ -z $ROUTEROS_PRIVATE_KEY ]] || [[ -z $DOMAIN ]] || [[ -z $HOTSPORT_PROFILLE ]] || [[ -z $HOTSPORT_AUTH ]]; then
+        echo "Check the config file $CONFIG_FILE or start with params: $0 [RouterOS User] [RouterOS Host] [SSH Port] [SSH Private Key] [Domain] [Hotspot Profille] [Hotspot Auth]"
         echo "Please avoid spaces"
         exit 1
 fi
@@ -79,5 +81,5 @@ $routeros /interface sstp-server server set certificate=$DOMAIN.pem_0
 
 $routeros /ip service set www-ssl certificate=$DOMAIN.pem_0
 $routeros /ip service set api-ssl certificate=$DOMAIN.pem_0
-$routeros /ip hotspot profile set $HOTSPORT_PROFILLE login-by=https ssl-certificate=$DOMAIN.pem_0
+$routeros /ip hotspot profile set $HOTSPORT_PROFILLE login-by=$HOTSPORT_AUTH,https ssl-certificate=$DOMAIN.pem_0
 exit 0
