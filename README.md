@@ -47,6 +47,7 @@ nano /opt/LetsEncrypt/LetsEncrypt.settings
 | ROUTEROS_HOST | 192.168.88.1 | IP local de acesso ao Mikrotik |
 | DOMAIN | meudominio.com | Dominio que será Certificado |
 | HOTSPORT_PROFILLE | default | Hotspot que receberá o Certificado |
+| HOTSPORT_AUTH | mac,http-chap,http-pap,trial | Tipos de autenticação do Hotspot |
 
 
 6 - Edite as Permissões do Arquivo:
