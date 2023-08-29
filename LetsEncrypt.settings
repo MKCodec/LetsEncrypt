@@ -5,3 +5,4 @@ ROUTEROS_PRIVATE_KEY=/opt/LetsEncrypt/LetsEncrypt
 DOMAIN=redeknet.com
 HOTSPOT_PROFILLE=default
 HOTSPOT_AUTH=mac,http-chap,http-pap,trial
+HOTSPOT_MODE=true
