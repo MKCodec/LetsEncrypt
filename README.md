@@ -83,7 +83,7 @@ scp -P $ROUTEROS_SSH_PORT /opt/LetsEncrypt/LetsEncrypt.pub "$ROUTEROS_USER"@"$RO
 ```sh
 apt update
 apt install software-properties-common -y
-add-apt-repository ppa:certbot/certbot
+apt-add-repository -r ppa:certbot/certbot
 apt update
 apt install certbot -y
 ```
